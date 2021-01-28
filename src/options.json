@@ -1,0 +1,48 @@
+{
+  "type": "object",
+  "properties": {
+    "exclude": {
+      "description": "A filter used to exclude sources from being processed.",
+      "anyOf": [
+        { "type": "string" },
+        { "instanceof": "RegExp" },
+        { "instanceof": "Function" },
+        {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              { "type": "string" },
+              { "instanceof": "RegExp" },
+              { "instanceof": "Function" }
+            ]
+          }
+        }
+      ]
+    },
+    "cacheDirectory": {
+      "description": "Path to a directory to use for caching remote files.",
+      "type": "string"
+    },
+    "preFetchTransform": {
+      "description": "A transformation to apply to each source before it is fetched.",
+      "instanceof": "Function"
+    },
+    "postFetchTransform": {
+      "description": "A transformation to apply to each source after it is fetched.",
+      "instanceof": "Function"
+    },
+    "includeContent": {
+      "description": "Determines whether to include the source content in the source map.",
+      "anyOf": [{ "type": "boolean" }, { "instanceof": "Function" }]
+    },
+    "emitContent": {
+      "description": "Determines whether to emit the source content to a separate file.",
+      "anyOf": [{ "type": "boolean" }, { "instanceof": "Function" }]
+    },
+    "sourceDir": {
+      "description": "Path to use as the base directory for the default postFetchTransform function.",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
